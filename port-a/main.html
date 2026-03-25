@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alex Chen — Creative Developer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Noto+Sans+JP:wght@300;400;500&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <nav id="nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="#hero">Alex<span>.</span></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-right">
+        <button type="button" class="theme-btn" id="themeBtn" aria-label="Toggle theme">
+          <svg class="icon-sun" width="16" height="16" aria-hidden="true"><use href="images/icons.svg#sun"/></svg>
+          <svg class="icon-moon" width="16" height="16" aria-hidden="true"><use href="images/icons.svg#moon"/></svg>
+        </button>
+        <button type="button" class="hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <main>
+    <section id="hero">
+      <div class="container hero-inner">
+        <div class="hero-eyebrow">
+          <span class="hero-eyebrow-dot" aria-hidden="true"></span>
+          <span>Available for freelance</span>
+        </div>
+        <h1 class="hero-name">Alex Chen</h1>
+        <p class="hero-role">
+          <span id="typed-text"></span><span class="typed-cursor" aria-hidden="true">|</span>
+        </p>
+        <p class="hero-desc">
+          I craft fast, accessible interfaces and polished web experiences — from design systems to full-stack prototypes.
+        </p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#work">
+            View work
+            <svg width="14" height="14" aria-hidden="true"><use href="images/icons.svg#right-arrow"/></svg>
+          </a>
+          <a class="btn-outline" href="#contact">Get in touch</a>
+        </div>
+        <div class="hero-socials">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+            <svg width="14" height="14" aria-hidden="true"><use href="images/icons.svg#github"/></svg>
+            GitHub
+          </a>
+          <span class="hero-socials-divider" aria-hidden="true"></span>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+            <svg width="14" height="14" aria-hidden="true"><use href="images/icons.svg#linkedin"/></svg>
+            LinkedIn
+          </a>
+          <span class="hero-socials-divider" aria-hidden="true"></span>
+          <a href="https://dribbble.com" target="_blank" rel="noopener noreferrer">
+            <svg width="14" height="14" aria-hidden="true"><use href="images/icons.svg#dribbble"/></svg>
+            Dribbble
+          </a>
+        </div>
+      </div>
+      <div class="scroll-hint">
+        <span>Scroll</span>
+        <div class="scroll-line" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section id="about" class="reveal">
+      <div class="container">
+        <p class="section-label">About</p>
+        <h2 class="section-title">Building products with clarity and care</h2>
+        <div class="about-grid">
+          <div class="about-photo-wrap">
+            <div class="about-photo">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop" alt="Portrait" width="600" height="800" loading="lazy">
+            </div>
+            <div class="about-photo-accent" aria-hidden="true"></div>
+          </div>
+          <div class="about-content">
+            <div class="about-text">
+              <p>
+                I’m a <strong>creative developer</strong> based in Tokyo, blending design systems, motion, and performance.
+                I focus on shipping interfaces that feel intentional — fast loads, clear hierarchy, and delightful micro-interactions.
+              </p>
+              <p>
+                Previously I’ve collaborated with startups and agencies on product sites, dashboards, and design tooling.
+              </p>
+            </div>
+            <div class="about-stats">
+              <div class="stat-item">
+                <div class="stat-number">8<span>+</span></div>
+                <div class="stat-label">Years experience</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">40<span>+</span></div>
+                <div class="stat-label">Projects shipped</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">12<span></span></div>
+                <div class="stat-label">Open source</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" class="reveal">
+      <div class="container">
+        <div class="work-header">
+          <div>
+            <p class="section-label">Selected work</p>
+            <h2 class="section-title">Projects</h2>
+          </div>
+          <div class="filter-tabs">
+            <button type="button" class="filter-btn active" data-filter="all">All</button>
+            <button type="button" class="filter-btn" data-filter="web">Web</button>
+            <button type="button" class="filter-btn" data-filter="product">Product</button>
+            <button type="button" class="filter-btn" data-filter="design">Design</button>
+          </div>
+        </div>
+        <div class="projects-grid">
+          <article class="project-card featured" data-category="web">
+            <div class="project-thumb">
+              <div class="project-thumb-inner t1">
+                <img class="thumb-pattern" src="images/thumb-nova.svg" alt="" width="800" height="400" loading="lazy">
+                <div class="project-thumb-overlay"><span>View project <svg width="14" height="14" aria-hidden="true"><use href="images/icons.svg#external-link"/></svg></span></div>
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-tags">
+                <span class="project-tag">React</span>
+                <span class="project-tag">Dashboard</span>
+              </div>
+              <h3 class="project-title">Nova Analytics</h3>
+              <p class="project-desc">Real-time metrics dashboard with customizable widgets and dark mode.</p>
+              <div class="project-links">
+                <a class="project-link" href="#">Live <svg width="12" height="12" aria-hidden="true"><use href="images/icons.svg#external-link"/></svg></a>
+                <a class="project-link" href="#">Code <svg width="12" height="12" aria-hidden="true"><use href="images/icons.svg#github"/></svg></a>
+              </div>
+            </div>
+          </article>
+          <article class="project-card" data-category="product">
+            <div class="project-thumb">
+              <div class="project-thumb-inner t2">
+                <img class="thumb-pattern" src="images/thumb-orbit.svg" alt="" width="400" height="225" loading="lazy">
+                <div class="project-thumb-overlay"><span>View project <svg width="14" height="14" aria-hidden="true"><use href="images/icons.svg#external-link"/></svg></span></div>
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-tags"><span class="project-tag">SaaS</span></div>
+              <h3 class="project-title">Orbit CRM</h3>
+              <p class="project-desc">Pipeline and automation UI for a fast-growing sales team.</p>
+              <div class="project-links">
+                <a class="project-link" href="#">Case study <svg width="12" height="12" aria-hidden="true"><use href="images/icons.svg#right-arrow"/></svg></a>
+              </div>
+            </div>
+          </article>
+          <article class="project-card" data-category="design">
+            <div class="project-thumb">
+              <div class="project-thumb-inner t3">
+                <img class="thumb-pattern" src="images/thumb-blocks.svg" alt="" width="400" height="225" loading="lazy">
+                <div class="project-thumb-overlay"><span>View project <svg width="14" height="14" aria-hidden="true"><use href="images/icons.svg#external-link"/></svg></span></div>
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-tags"><span class="project-tag">Design system</span></div>
+              <h3 class="project-title">Blocks UI</h3>
+              <p class="project-desc">Component library and documentation for a fintech product.</p>
+              <div class="project-links">
+                <a class="project-link" href="#">Figma <svg width="12" height="12" aria-hidden="true"><use href="images/icons.svg#external-link"/></svg></a>
+              </div>
+            </div>
+          </article>
+          <article class="project-card" data-category="web">
+            <div class="project-thumb">
+              <div class="project-thumb-inner t4">
+                <img class="thumb-pattern" src="images/thumb-flair.svg" alt="" width="400" height="225" loading="lazy">
+                <div class="project-thumb-overlay"><span>View project <svg width="14" height="14" aria-hidden="true"><use href="images/icons.svg#external-link"/></svg></span></div>
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-tags"><span class="project-tag">Marketing</span></div>
+              <h3 class="project-title">Flair Studio</h3>
+              <p class="project-desc">Brand site with scroll-driven storytelling and WebGL accents.</p>
+              <div class="project-links">
+                <a class="project-link" href="#">Live <svg width="12" height="12" aria-hidden="true"><use href="images/icons.svg#external-link"/></svg></a>
+              </div>
+            </div>
+          </article>
+          <article class="project-card" data-category="product">
+            <div class="project-thumb">
+              <div class="project-thumb-inner t5">
+                <img class="thumb-pattern" src="images/thumb-pallet.svg" alt="" width="400" height="225" loading="lazy">
+                <div class="project-thumb-overlay"><span>View project <svg width="14" height="14" aria-hidden="true"><use href="images/icons.svg#external-link"/></svg></span></div>
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-tags"><span class="project-tag">Mobile web</span></div>
+              <h3 class="project-title">Pallet</h3>
+              <p class="project-desc">Inventory and ordering flow optimized for small retailers.</p>
+              <div class="project-links">
+                <a class="project-link" href="#">Live <svg width="12" height="12" aria-hidden="true"><use href="images/icons.svg#external-link"/></svg></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="reveal">
+      <div class="container">
+        <p class="section-label">Experience</p>
+        <h2 class="section-title">Where I’ve been</h2>
+        <div class="exp-layout">
+          <aside class="exp-sidebar">
+            <p>Agency, product, and freelance — always shipping with users in mind.</p>
+          </aside>
+          <div class="exp-timeline">
+            <div class="exp-item">
+              <p class="exp-period">2022 — Present</p>
+              <h3 class="exp-role">Lead Frontend Engineer</h3>
+              <p class="exp-company">Studio North</p>
+              <p class="exp-desc">Leading design system adoption, performance budgets, and client delivery.</p>
+              <div class="exp-tags">
+                <span class="exp-tag">React</span>
+                <span class="exp-tag">Next.js</span>
+                <span class="exp-tag">Storybook</span>
+              </div>
+            </div>
+            <div class="exp-item">
+              <p class="exp-period">2019 — 2022</p>
+              <h3 class="exp-role">Product Engineer</h3>
+              <p class="exp-company">Orbit Labs</p>
+              <p class="exp-desc">Built customer-facing surfaces and internal tooling for a B2B SaaS.</p>
+              <div class="exp-tags">
+                <span class="exp-tag">TypeScript</span>
+                <span class="exp-tag">GraphQL</span>
+              </div>
+            </div>
+            <div class="exp-item">
+              <p class="exp-period">2016 — 2019</p>
+              <h3 class="exp-role">Frontend Developer</h3>
+              <p class="exp-company">Various agencies</p>
+              <p class="exp-desc">Campaign sites, e-commerce, and interactive installations.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="reveal">
+      <div class="container">
+        <p class="section-label">Skills</p>
+        <h2 class="section-title">Tools &amp; stack</h2>
+        <div class="skills-categories">
+          <div class="skill-category">
+            <p class="skill-cat-label">Frontend</p>
+            <div class="skill-list">
+              <span class="skill-tag">React</span>
+              <span class="skill-tag">TypeScript</span>
+              <span class="skill-tag">Next.js</span>
+              <span class="skill-tag">Vue</span>
+              <span class="skill-tag">CSS / SCSS</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <p class="skill-cat-label">Design &amp; motion</p>
+            <div class="skill-list">
+              <span class="skill-tag">Figma</span>
+              <span class="skill-tag">Framer</span>
+              <span class="skill-tag">After Effects</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <p class="skill-cat-label">Backend &amp; ops</p>
+            <div class="skill-list">
+              <span class="skill-tag">Node.js</span>
+              <span class="skill-tag">PostgreSQL</span>
+              <span class="skill-tag">Vercel</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="reveal">
+      <div class="container">
+        <div class="contact-inner">
+          <p class="contact-big">Let’s <span>build</span> something.</p>
+          <p class="contact-sub">Tell me about your project, timeline, and goals — I’ll reply within a few days.</p>
+          <form class="contact-form" id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" placeholder="Your name" autocomplete="name" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="What are we making?" required></textarea>
+            </div>
+            <div id="formStatus" class="form-status" role="status" aria-live="polite"></div>
+            <div class="form-submit">
+              <button type="submit" class="btn-primary" id="submitBtn">
+                Send Message
+                <svg width="14" height="14" class="icon" aria-hidden="true"><use href="images/icons.svg#send"/></svg>
+              </button>
+            </div>
+          </form>
+          <p class="contact-email">Or email me directly at <a href="mailto:hello@alex.dev">hello@alex.dev</a></p>
+          <div class="contact-socials">
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+              <svg width="14" height="14" aria-hidden="true"><use href="images/icons.svg#twitter"/></svg>
+              Twitter
+            </a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+              <svg width="14" height="14" aria-hidden="true"><use href="images/icons.svg#github"/></svg>
+              GitHub
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+              <svg width="14" height="14" aria-hidden="true"><use href="images/icons.svg#linkedin"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-copy">© <span>2025</span> Alex Chen. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a href="#hero" class="back-to-top" aria-label="Back to top">
+        <svg width="18" height="18" aria-hidden="true"><use href="images/icons.svg#chevron-up"/></svg>
+      </a>
+    </div>
+  </footer>
+
+  <script src="js/theme.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/typewriter.js"></script>
+  <script src="js/reveal.js"></script>
+  <script src="js/filter.js"></script>
+  <script src="js/contact-form.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+// 外部スプライト（images/icons.svg）を <svg><use></svg> で参照する際の共通スタイル
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+  color: inherit;
+}
+
+.project-link .icon {
+  flex-shrink: 0;
+}
+
+.btn-primary .icon {
+  flex-shrink: 0;
+}
+
+.icon.icon--sm {
+  width: 12px;
+  height: 12px;
+}

@@ -1,0 +1,40 @@
+/* ============================================================
+   CSS CUSTOM PROPERTIES — Edit these to customize your theme
+   ============================================================ */
+:root {
+  /* Colors */
+  --bg:           #0C0C0C;
+  --bg-card:      #161616;
+  --bg-hover:     #1E1E1E;
+  --border:       rgba(255,255,255,0.07);
+  --border-hover: rgba(255,255,255,0.14);
+  --text-primary: #EDEAE3;
+  --text-secondary: #888580;
+  --text-muted:   #555250;
+  --accent:       #C8B8FF;       /* ← Change this for a different accent color */
+  --accent-dim:   rgba(200,184,255,0.08);
+  --accent-glow:  rgba(200,184,255,0.15);
+
+  /* Typography */
+  --font-display: 'Syne', 'Noto Sans JP', sans-serif;
+  --font-body:    'DM Sans', 'Noto Sans JP', sans-serif;
+
+  /* Layout */
+  --max-w:        1100px;
+  --section-gap:  140px;
+}
+
+/* Light mode */
+[data-theme="light"] {
+  --bg:           #F8F6F2;
+  --bg-card:      #FFFFFF;
+  --bg-hover:     #F0EDE8;
+  --border:       rgba(0,0,0,0.08);
+  --border-hover: rgba(0,0,0,0.16);
+  --text-primary: #18160F;
+  --text-secondary: #7A7570;
+  --text-muted:   #B0ACA5;
+  --accent:       #6B54C8;
+  --accent-dim:   rgba(107,84,200,0.07);
+  --accent-glow:  rgba(107,84,200,0.12);
+}

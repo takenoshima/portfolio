@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="120" viewBox="0 0 200 120" aria-hidden="true">
+  <defs>
+    <pattern id="p1" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="1" fill="rgba(200,184,255,0.3)"/>
+    </pattern>
+  </defs>
+  <rect width="200" height="120" fill="url(#p1)"/>
+  <text x="100" y="65" text-anchor="middle" font-size="42" font-weight="800" fill="rgba(200,184,255,0.15)" font-family="sans-serif">NOVA</text>
+</svg>

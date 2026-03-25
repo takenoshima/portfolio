@@ -1,0 +1,11 @@
+$breakpoints: (
+  'sp': 'screen and (max-width: 600px)',
+  'md': 'screen and (max-width: 900px)',
+) !default;
+
+// メディアクエリを呼び出すMixin
+@mixin mq($breakpoint: md) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}

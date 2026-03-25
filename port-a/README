@@ -1,0 +1,12 @@
+main.html -71
+<!-- Your name -->
+<h1 class="hero-name">Alex<br>Chen</h1>
+
+js/typewriter.js -6
+const roles = [
+    // Your title
+    'Frontend Developer',
+    'UI/UX Designer',
+    'Full-Stack Engineer',
+    'Creative Coder',
+  ];

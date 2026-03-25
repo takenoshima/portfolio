@@ -1,11 +1,17 @@
+@use 'sass:map';
+
 $breakpoints: (
   'sp': 'screen and (max-width: 600px)',
   'md': 'screen and (max-width: 900px)',
 ) !default;
 
-// メディアクエリを呼び出すMixin
-@mixin mq($breakpoint: md) {
-  @media #{map-get($breakpoints, $breakpoint)} {
+// メディアクエリ（$breakpoints のキー: sp / md）
+@mixin mq($breakpoint: 'md') {
+  $query: map.get($breakpoints, $breakpoint);
+  @if $query == null {
+    @error 'Unknown breakpoint: #{$breakpoint}';
+  }
+  @media #{$query} {
     @content;
   }
 }

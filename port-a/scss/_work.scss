@@ -1,3 +1,5 @@
+@use 'mixin' as *;
+
 /* ============================================================
    WORK / PROJECTS
    ============================================================ */
@@ -6,6 +8,12 @@
   align-items: flex-end;
   justify-content: space-between;
   margin-bottom: 60px;
+
+  @include mq('md') {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
 }
 #work .work-header .section-title { margin-bottom: 0; }
 
@@ -36,6 +44,10 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+
+  @include mq('md') {
+    grid-template-columns: 1fr;
+  }
 }
 
 .project-card {
@@ -52,6 +64,10 @@
 }
 .project-card.featured {
   grid-column: span 2;
+
+  @include mq('md') {
+    grid-column: span 1;
+  }
 }
 
 .project-thumb {
@@ -62,6 +78,10 @@
 }
 .project-card.featured .project-thumb {
   aspect-ratio: 21/9;
+
+  @include mq('md') {
+    aspect-ratio: 16/9;
+  }
 }
 
 .project-thumb-inner {
@@ -161,3 +181,5 @@
   transition: color 0.2s;
 }
 .project-link:hover { color: var(--accent); }
+
+

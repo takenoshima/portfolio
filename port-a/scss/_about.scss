@@ -1,3 +1,5 @@
+@use 'mixin' as *;
+
 /* ============================================================
    ABOUT
    ============================================================ */
@@ -6,10 +8,19 @@
   grid-template-columns: 300px 1fr;
   gap: 80px;
   align-items: start;
+
+  @include mq('md') {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
 }
 
 .about-photo-wrap {
   position: relative;
+
+  @include mq('md') {
+    max-width: 260px;
+  }
 }
 .about-photo {
   width: 100%;
@@ -61,8 +72,11 @@
   padding: 28px 0;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
+
+  @include mq('sp') {
+    grid-template-columns: 1fr 1fr;
+  }
 }
-.stat-item {}
 .stat-number {
   font-family: var(--font-display);
   font-size: 36px;
@@ -77,3 +91,4 @@
   color: var(--text-muted);
   margin-top: 4px;
 }
+

@@ -1,3 +1,5 @@
+@use 'mixin' as *;
+
 /* ============================================================
    SKILLS
    ============================================================ */
@@ -7,6 +9,14 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+
+  @include mq('md') {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include mq('sp') {
+    grid-template-columns: 1fr;
+  }
 }
 
 .skill-category {
@@ -48,3 +58,5 @@
   color: var(--accent);
   background: var(--accent-dim);
 }
+
+

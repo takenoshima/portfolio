@@ -1,3 +1,5 @@
+@use 'mixin' as *;
+
 /* ============================================================
    NAVIGATION
    ============================================================ */
@@ -28,6 +30,10 @@ nav.scrolled {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @include mq('sp') {
+    padding: 0 20px;
+  }
 }
 
 .nav-logo {
@@ -45,6 +51,10 @@ nav.scrolled {
   display: flex;
   align-items: center;
   gap: 36px;
+
+  @include mq('md') {
+    display: none;
+  }
 }
 .nav-links a {
   font-size: 13px;
@@ -102,6 +112,10 @@ nav.scrolled {
   flex-direction: column;
   gap: 5px;
   padding: 8px;
+
+  @include mq('md') {
+    display: flex;
+  }
 }
 .hamburger span {
   display: block;

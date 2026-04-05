@@ -1,0 +1,426 @@
+@use 'variables' as *;
+@use 'mixin' as *;
+
+// ============================================
+// Header - 工務店テンプレート
+// ============================================
+
+.l-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $header-height;
+  z-index: $z-header;
+  transition: $transition-base;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+
+  @include sp {
+    height: $header-height-sp;
+  }
+
+  &.is-scrolled {
+    box-shadow: $shadow-sm;
+  }
+
+  &__inner {
+    @include flex-between;
+    height: 100%;
+    padding: 0 $spacing-xl;
+
+    @include sp {
+      padding: 0 $spacing-md;
+    }
+  }
+
+  // ---- Logo ----
+  &__logo {
+    flex-shrink: 0;
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: $spacing-sm;
+    }
+
+    img {
+      height: 40px;
+      width: auto;
+
+      @include sp {
+        height: 32px;
+      }
+    }
+
+    .logo-text {
+      font-family: $font-family-heading;
+      font-size: $font-size-lg;
+      font-weight: $font-weight-bold;
+      color: $color-primary;
+      letter-spacing: $letter-spacing-wide;
+      white-space: nowrap;
+
+      @include sp {
+        font-size: $font-size-base;
+      }
+
+      small {
+        display: block;
+        font-size: $font-size-xs;
+        font-weight: $font-weight-regular;
+        color: $color-text-light;
+        letter-spacing: $letter-spacing-wider;
+      }
+    }
+  }
+
+  // ---- Navigation ----
+  &__nav {
+    @include sp {
+      display: none;
+    }
+
+    ul {
+      display: flex;
+      align-items: center;
+      gap: $spacing-xl;
+    }
+
+    li {
+      position: relative;
+
+      &:hover .l-header__dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+    }
+
+    a {
+      font-size: $font-size-sm;
+      font-weight: $font-weight-medium;
+      letter-spacing: $letter-spacing-wide;
+      color: $color-text;
+      position: relative;
+      padding: $spacing-sm 0;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: $color-primary;
+        transition: width 0.3s ease;
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+    }
+  }
+
+  // ---- Dropdown ----
+  &__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 30%;
+    transform: translateX(-30%) translateY(10px);
+    background: $color-bg;
+    min-width: 200px;
+    padding: $spacing-md 0;
+    box-shadow: $shadow-lg;
+    flex-direction: column;
+    gap: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: $transition-base;
+
+    li {
+      display: block;
+      padding: $spacing-sm $spacing-lg;
+      font-size: $font-size-sm;
+      white-space: nowrap;
+
+      &:hover {
+        background-color: $color-bg-light;
+        color: $color-primary;
+      }
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  // ---- Right Actions ----
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+  }
+
+  // ---- CTA Button ----
+  &__cta {
+    @include btn-primary;
+    padding: 10px 24px;
+    font-size: $font-size-xs;
+
+    @include sp {
+      display: none;
+    }
+  }
+
+  // ---- Hamburger ----
+  &__hamburger {
+    width: 44px;
+    height: 44px;
+    @include flex-center;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    z-index: $z-modal + 1;
+
+    span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background-color: $color-primary;
+      transition: $transition-base;
+    }
+
+    &.is-active {
+      span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+
+      span:nth-child(2) {
+        opacity: 0;
+      }
+
+      span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+    }
+  }
+}
+
+// ============================================
+// Menu Modal - フルスクリーンメニュー
+// ============================================
+.l-menu-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $color-primary;
+  z-index: $z-modal;
+  opacity: 0;
+  visibility: hidden;
+  transition: $transition-slow;
+  overflow: hidden;
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__close {
+    position: fixed;
+    top: $spacing-lg;
+    right: $spacing-lg;
+    z-index: $z-modal + 2;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: $color-text-white;
+    transition: color $transition-base;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 26px;
+      height: 2px;
+      background-color: currentColor;
+      border-radius: 1px;
+    }
+
+    &::before {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &::after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    &:hover {
+      color: $color-secondary;
+    }
+
+    @include sp {
+      top: $spacing-md;
+      right: $spacing-md;
+      width: 44px;
+      height: 44px;
+    }
+  }
+
+  &__inner {
+    padding: $spacing-6xl $spacing-2xl $spacing-3xl;
+    min-height: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+    @include flex-column;
+    justify-content: center;
+
+    @include sp {
+      padding: $spacing-5xl $spacing-lg $spacing-2xl;
+    }
+  }
+
+  &__nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-xl $spacing-3xl;
+
+    @include sp {
+      grid-template-columns: 1fr;
+      gap: $spacing-lg;
+    }
+
+    a {
+      display: block;
+      color: $color-text-white;
+      font-size: $font-size-xl;
+      font-weight: $font-weight-medium;
+      letter-spacing: $letter-spacing-wide;
+      padding: $spacing-md 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      transition: $transition-base;
+
+      .en {
+        @include english-label;
+        display: block;
+        font-size: $font-size-xs;
+        color: $color-secondary;
+        margin-bottom: 4px;
+      }
+
+      &:hover {
+        color: $color-secondary;
+        padding-left: $spacing-md;
+      }
+    }
+  }
+
+  &__contact {
+    margin-top: $spacing-3xl;
+    text-align: center;
+
+    .tel {
+      display: block;
+      color: $color-text-white;
+      font-family: $font-family-english;
+      font-size: $font-size-3xl;
+      letter-spacing: $letter-spacing-wide;
+      margin-bottom: $spacing-sm;
+    }
+
+    .hours {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: $font-size-xs;
+      margin-bottom: $spacing-lg;
+    }
+
+    .c-btn {
+      background-color: $color-secondary;
+
+      &:hover {
+        background-color: $color-secondary-light;
+      }
+    }
+  }
+}
+
+// ============================================
+// Fixed CTA - 固定追従CTA
+// ============================================
+.l-fixed-cta {
+  position: fixed;
+  bottom: $spacing-lg;
+  right: $spacing-lg;
+  z-index: $z-cta-fixed;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: $transition-base;
+
+  @include sp {
+    bottom: 0;
+    right: 0;
+    left: 0;
+    flex-direction: row;
+    gap: 0;
+  }
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-sm;
+    padding: 16px 24px;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    letter-spacing: $letter-spacing-wide;
+    text-decoration: none;
+    border-radius: $radius-md;
+    transition: $transition-base;
+    white-space: nowrap;
+    box-shadow: $shadow-lg;
+
+    @include sp {
+      border-radius: 0;
+      flex: 1;
+      padding: 14px 16px;
+      font-size: $font-size-xs;
+    }
+
+    &--primary {
+      background-color: $color-primary;
+      color: $color-text-white;
+
+      &:hover {
+        background-color: $color-primary-light;
+      }
+    }
+
+    &--secondary {
+      background-color: $color-secondary;
+      color: $color-text-white;
+
+      &:hover {
+        background-color: $color-secondary-light;
+      }
+    }
+
+    i {
+      font-size: $font-size-lg;
+    }
+  }
+}

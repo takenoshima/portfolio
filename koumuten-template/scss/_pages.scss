@@ -1,0 +1,1195 @@
+@use 'variables' as *;
+@use 'mixin' as *;
+// ============================================
+// Pages - 各ページスタイル
+// ============================================
+
+// ---- Features（家づくりの特長）----
+.p-features {
+  &__intro {
+    @include container-narrow;
+    text-align: center;
+    padding: $spacing-3xl 0;
+
+    p {
+      font-size: $font-size-base;
+      line-height: 2;
+      color: $color-text-light;
+    }
+  }
+
+  &__nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-md;
+    margin-bottom: $spacing-3xl;
+
+    @include tab {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include sp {
+      grid-template-columns: 1fr;
+    }
+
+    a {
+      display: block;
+      padding: $spacing-lg;
+      background: $color-bg;
+      border: 1px solid $color-border-light;
+      text-align: center;
+      transition: $transition-base;
+
+      .num {
+        @include english-label;
+        font-size: $font-size-xs;
+        color: $color-secondary;
+      }
+
+      h3 {
+        font-size: $font-size-lg;
+        font-weight: $font-weight-medium;
+        margin-top: $spacing-sm;
+      }
+
+      &:hover {
+        border-color: $color-primary;
+        box-shadow: $shadow-md;
+      }
+    }
+  }
+}
+
+// ---- Feature Detail（デザイン/性能/価格/保証）----
+.p-feature-detail {
+  &__section {
+    padding: $spacing-4xl 0;
+
+    &:nth-child(even) {
+      background-color: $color-bg-light;
+    }
+  }
+
+  &__content {
+    @include container;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-3xl;
+    align-items: center;
+
+    @include sp {
+      grid-template-columns: 1fr;
+      gap: $spacing-xl;
+    }
+
+    &--reverse {
+      direction: rtl;
+
+      > * {
+        direction: ltr;
+      }
+
+      @include sp {
+        direction: ltr;
+      }
+    }
+  }
+
+  &__image {
+    @include aspect-ratio(4, 3);
+    border-radius: $radius-md;
+    overflow: hidden;
+  }
+
+  &__text {
+    h3 {
+      @include heading-style;
+      font-size: $font-size-2xl;
+      margin-bottom: $spacing-lg;
+
+      .en {
+        @include english-label;
+        display: block;
+        font-size: $font-size-xs;
+        color: $color-secondary;
+        margin-bottom: $spacing-sm;
+      }
+    }
+
+    p {
+      font-size: $font-size-base;
+      color: $color-text-light;
+      line-height: 2;
+      margin-bottom: $spacing-lg;
+    }
+
+    ul {
+      li {
+        font-size: $font-size-sm;
+        padding: $spacing-sm 0;
+        padding-left: $spacing-lg;
+        position: relative;
+        border-bottom: 1px solid $color-border-light;
+
+        &::before {
+          content: '✓';
+          position: absolute;
+          left: 0;
+          color: $color-primary;
+          font-weight: $font-weight-bold;
+        }
+      }
+    }
+  }
+}
+
+// ---- Flow（家づくりの流れ）----
+.p-flow {
+  &__timeline {
+    @include container-narrow;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 40px;
+      width: 2px;
+      height: 100%;
+      background: $color-border;
+
+      @include sp {
+        left: 20px;
+      }
+    }
+  }
+
+  &__step {
+    position: relative;
+    padding-left: 100px;
+    padding-bottom: $spacing-3xl;
+
+    @include sp {
+      padding-left: 56px;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+
+    .num {
+      position: absolute;
+      left: 16px;
+      top: 0;
+      width: 48px;
+      height: 48px;
+      @include flex-center;
+      background: $color-primary;
+      color: $color-text-white;
+      border-radius: $radius-round;
+      @include english-label;
+      font-size: $font-size-sm;
+
+      @include sp {
+        left: 0;
+        width: 40px;
+        height: 40px;
+        font-size: $font-size-xs;
+      }
+    }
+
+    h3 {
+      @include heading-style;
+      font-size: $font-size-xl;
+      margin-bottom: $spacing-md;
+    }
+
+    p {
+      font-size: $font-size-sm;
+      color: $color-text-light;
+      line-height: $line-height-base;
+    }
+
+    .image {
+      @include aspect-ratio(16, 9);
+      border-radius: $radius-md;
+      overflow: hidden;
+      margin-top: $spacing-lg;
+    }
+  }
+}
+
+// ---- FAQ（よくあるご質問）----
+.p-faq {
+  &__list {
+    @include container-narrow;
+  }
+
+  &__item {
+    border-bottom: 1px solid $color-border;
+
+    &.is-open {
+      .p-faq__question::after {
+        transform: rotate(180deg);
+      }
+
+      .p-faq__answer {
+        max-height: 500px;
+        padding-bottom: $spacing-lg;
+      }
+    }
+  }
+
+  &__question {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: $spacing-lg 0;
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    text-align: left;
+    cursor: pointer;
+    gap: $spacing-md;
+
+    .label {
+      @include english-label;
+      font-size: $font-size-lg;
+      color: $color-primary;
+      flex-shrink: 0;
+    }
+
+    &::after {
+      content: '▼';
+      font-size: $font-size-xs;
+      color: $color-text-lighter;
+      margin-left: auto;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+  }
+
+  &__answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding-left: 44px;
+
+    p {
+      font-size: $font-size-sm;
+      color: $color-text-light;
+      line-height: 2;
+    }
+  }
+}
+
+// ---- Works（施工事例）----
+.p-works {
+  &__filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-2xl;
+
+    button {
+      padding: 8px 20px;
+      font-size: $font-size-sm;
+      border: 1px solid $color-border;
+      border-radius: 100px;
+      transition: $transition-base;
+      background: $color-bg;
+
+      &.is-active,
+      &:hover {
+        background: $color-primary;
+        color: $color-text-white;
+        border-color: $color-primary;
+      }
+    }
+  }
+
+  &__grid {
+    @include grid(3, $spacing-lg);
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: $spacing-sm;
+    margin-top: $spacing-3xl;
+
+    a, span {
+      width: 40px;
+      height: 40px;
+      @include flex-center;
+      font-size: $font-size-sm;
+      border: 1px solid $color-border;
+      transition: $transition-base;
+    }
+
+    a:hover,
+    .current {
+      background: $color-primary;
+      color: $color-text-white;
+      border-color: $color-primary;
+    }
+  }
+}
+
+// ---- Works Detail（施工事例詳細）----
+.p-works-detail {
+  &__header {
+    @include container;
+    padding-top: $spacing-xl;
+
+    .tags {
+      display: flex;
+      gap: $spacing-sm;
+      margin-bottom: $spacing-md;
+
+      span {
+        font-size: $font-size-xs;
+        padding: 4px 12px;
+        border: 1px solid $color-primary;
+        color: $color-primary;
+      }
+    }
+
+    h1 {
+      @include heading-style;
+      font-size: $font-size-3xl;
+      margin-bottom: $spacing-lg;
+
+      @include sp {
+        font-size: $font-size-2xl;
+      }
+    }
+  }
+
+  &__gallery {
+    margin-bottom: $spacing-3xl;
+
+    .main-image {
+      @include aspect-ratio(16, 9);
+      border-radius: $radius-md;
+      overflow: hidden;
+      margin-bottom: $spacing-md;
+    }
+
+    .thumbnails {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: $spacing-sm;
+
+      @include sp {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .thumb {
+        @include aspect-ratio(1, 1);
+        border-radius: $radius-sm;
+        cursor: pointer;
+        opacity: 0.6;
+        transition: $transition-base;
+
+        &.is-active,
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &__info {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 0;
+    margin-bottom: $spacing-3xl;
+    border-top: 1px solid $color-border;
+
+    @include sp {
+      grid-template-columns: 120px 1fr;
+    }
+
+    dt {
+      padding: $spacing-md $spacing-lg;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-medium;
+      background: $color-bg-light;
+      border-bottom: 1px solid $color-border;
+    }
+
+    dd {
+      padding: $spacing-md $spacing-lg;
+      font-size: $font-size-sm;
+      color: $color-text-light;
+      border-bottom: 1px solid $color-border;
+    }
+  }
+
+  &__body {
+    font-size: $font-size-base;
+    line-height: 2;
+    color: $color-text;
+
+    h2 {
+      @include heading-style;
+      font-size: $font-size-xl;
+      margin: $spacing-2xl 0 $spacing-lg;
+      padding-bottom: $spacing-sm;
+      border-bottom: 2px solid $color-primary;
+    }
+
+    p {
+      margin-bottom: $spacing-lg;
+    }
+
+    img {
+      border-radius: $radius-md;
+      margin: $spacing-lg 0;
+    }
+  }
+
+  &__related {
+    padding-top: $spacing-4xl;
+    margin-top: $spacing-4xl;
+    border-top: 1px solid $color-border;
+  }
+}
+
+// ---- Interview（お客様インタビュー）----
+.p-interview {
+  &__hero {
+    @include container;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-3xl;
+    align-items: center;
+    margin-bottom: $spacing-4xl;
+
+    @include sp {
+      grid-template-columns: 1fr;
+      gap: $spacing-xl;
+    }
+
+    .image {
+      @include aspect-ratio(4, 3);
+      border-radius: $radius-md;
+      overflow: hidden;
+    }
+
+    .text {
+      .label {
+        @include english-label;
+        font-size: $font-size-xs;
+        color: $color-secondary;
+        margin-bottom: $spacing-sm;
+      }
+
+      h2 {
+        @include heading-style;
+        font-size: $font-size-2xl;
+        margin-bottom: $spacing-lg;
+      }
+
+      .profile {
+        font-size: $font-size-sm;
+        color: $color-text-light;
+        padding: $spacing-md;
+        background: $color-bg-light;
+        border-radius: $radius-md;
+      }
+    }
+  }
+
+  &__content {
+    @include container-narrow;
+
+    .qa-block {
+      margin-bottom: $spacing-3xl;
+
+      .question {
+        font-size: $font-size-lg;
+        font-weight: $font-weight-medium;
+        color: $color-primary;
+        padding: $spacing-md 0;
+        padding-left: $spacing-2xl;
+        position: relative;
+        margin-bottom: $spacing-lg;
+
+        &::before {
+          content: 'Q.';
+          position: absolute;
+          left: 0;
+          @include english-label;
+          font-size: $font-size-xl;
+          color: $color-secondary;
+        }
+      }
+
+      .answer {
+        font-size: $font-size-base;
+        color: $color-text-light;
+        line-height: 2;
+        padding-left: $spacing-2xl;
+        position: relative;
+
+        &::before {
+          content: 'A.';
+          position: absolute;
+          left: 0;
+          top: 0;
+          @include english-label;
+          font-size: $font-size-xl;
+          color: $color-primary;
+        }
+      }
+    }
+  }
+}
+
+// ---- Products（商品ラインナップ）----
+.p-products {
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-xl;
+
+    @include sp {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__item {
+    position: relative;
+    @include aspect-ratio(16, 9);
+    @include overlay(rgba(0, 0, 0, 0.35));
+    border-radius: $radius-md;
+    overflow: hidden;
+    cursor: pointer;
+    transition: $transition-base;
+
+    &:hover {
+      &::before {
+        background: rgba($color-primary, 0.6);
+      }
+
+      img {
+        transform: scale(1.05);
+      }
+    }
+
+    img {
+      transition: transform 0.5s ease;
+    }
+
+    .content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: $spacing-xl;
+      z-index: 2;
+      color: $color-text-white;
+    }
+
+    .name {
+      @include heading-style;
+      font-size: $font-size-2xl;
+      margin-bottom: $spacing-sm;
+
+      @include sp {
+        font-size: $font-size-xl;
+      }
+    }
+
+    .desc {
+      font-size: $font-size-sm;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .price {
+      margin-top: $spacing-md;
+      font-family: $font-family-english;
+      font-size: $font-size-lg;
+      color: $color-secondary;
+
+      span {
+        font-size: $font-size-sm;
+        color: rgba(255, 255, 255, 0.6);
+      }
+    }
+  }
+}
+
+// ---- Products Detail（商品詳細）----
+.p-product-detail {
+  &__hero {
+    position: relative;
+    height: 500px;
+    @include overlay(rgba($color-primary-dark, 0.5));
+    background-size: cover;
+    background-position: center;
+    @include flex-center;
+
+    @include sp {
+      height: 350px;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: $color-text-white;
+
+      .label {
+        @include english-label;
+        font-size: $font-size-sm;
+        color: $color-secondary;
+        margin-bottom: $spacing-sm;
+      }
+
+      h1 {
+        @include heading-style;
+        font-size: $font-size-4xl;
+
+        @include sp {
+          font-size: $font-size-3xl;
+        }
+      }
+
+      .price {
+        font-family: $font-family-english;
+        font-size: $font-size-2xl;
+        color: $color-secondary;
+        margin-top: $spacing-md;
+      }
+    }
+  }
+
+  &__features {
+    @include grid(3, $spacing-xl);
+
+    .feature-card {
+      text-align: center;
+      padding: $spacing-2xl;
+
+      .icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto $spacing-lg;
+        @include flex-center;
+        border: 2px solid $color-border-light;
+        border-radius: $radius-round;
+        font-size: $font-size-3xl;
+      }
+
+      h3 {
+        @include heading-style;
+        font-size: $font-size-lg;
+        margin-bottom: $spacing-md;
+      }
+
+      p {
+        font-size: $font-size-sm;
+        color: $color-text-light;
+      }
+    }
+  }
+}
+
+// ---- Model House（モデルハウス）----
+.p-modelhouse {
+  &__grid {
+    @include grid(3, $spacing-lg);
+  }
+
+  .c-card {
+    .status-badge {
+      position: absolute;
+      top: $spacing-md;
+      left: $spacing-md;
+      padding: 4px 16px;
+      font-size: $font-size-xs;
+      font-weight: $font-weight-medium;
+      color: $color-text-white;
+      background: $color-primary;
+      z-index: 1;
+    }
+
+    .info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-top: $spacing-sm;
+
+      li {
+        display: flex;
+        gap: $spacing-sm;
+        font-size: $font-size-xs;
+        color: $color-text-light;
+
+        .label {
+          flex-shrink: 0;
+          font-weight: $font-weight-medium;
+          color: $color-text;
+        }
+      }
+    }
+  }
+}
+
+// ---- Model House Detail ----
+.p-modelhouse-detail {
+  &__gallery {
+    margin-bottom: $spacing-3xl;
+
+    .main-image {
+      @include aspect-ratio(16, 9);
+      border-radius: $radius-md;
+      overflow: hidden;
+      margin-bottom: $spacing-md;
+    }
+
+    .thumbs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: $spacing-sm;
+
+      @include sp {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .thumb {
+        @include aspect-ratio(4, 3);
+        border-radius: $radius-sm;
+        cursor: pointer;
+        opacity: 0.7;
+        transition: $transition-base;
+
+        &.is-active,
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &__info {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: $spacing-3xl;
+
+    @include sp {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__body {
+    h2 {
+      @include heading-style;
+      font-size: $font-size-2xl;
+      margin-bottom: $spacing-lg;
+    }
+
+    p {
+      font-size: $font-size-base;
+      line-height: 2;
+      color: $color-text-light;
+      margin-bottom: $spacing-lg;
+    }
+  }
+
+  &__sidebar {
+    .reservation-box {
+      background: $color-bg-light;
+      padding: $spacing-xl;
+      border-radius: $radius-md;
+      position: sticky;
+      top: $header-height + $spacing-lg;
+
+      h3 {
+        @include heading-style;
+        font-size: $font-size-lg;
+        text-align: center;
+        margin-bottom: $spacing-lg;
+      }
+
+      .c-btn {
+        width: 100%;
+      }
+    }
+
+    .map-box {
+      margin-top: $spacing-lg;
+      border-radius: $radius-md;
+      overflow: hidden;
+
+      iframe {
+        width: 100%;
+        height: 250px;
+      }
+
+      .address {
+        padding: $spacing-md;
+        background: $color-bg-light;
+        font-size: $font-size-sm;
+        color: $color-text-light;
+      }
+    }
+  }
+}
+
+// ---- Company（会社概要）----
+.p-company {
+  &__message {
+    @include container-narrow;
+    text-align: center;
+    padding: $spacing-3xl 0;
+
+    .image {
+      width: 200px;
+      height: 200px;
+      border-radius: $radius-round;
+      overflow: hidden;
+      margin: 0 auto $spacing-xl;
+
+      img {
+        @include cover-image;
+      }
+    }
+
+    .position {
+      font-size: $font-size-sm;
+      color: $color-text-lighter;
+      margin-bottom: $spacing-sm;
+    }
+
+    .name {
+      @include heading-style;
+      font-size: $font-size-2xl;
+      margin-bottom: $spacing-xl;
+    }
+
+    p {
+      text-align: left;
+      font-size: $font-size-base;
+      line-height: 2;
+      color: $color-text-light;
+    }
+  }
+
+  &__table {
+    @include container-narrow;
+    width: 100%;
+    border-top: 2px solid $color-primary;
+
+    tr {
+      border-bottom: 1px solid $color-border;
+    }
+
+    th {
+      width: 180px;
+      padding: $spacing-lg;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-medium;
+      text-align: left;
+      vertical-align: top;
+      background: $color-bg-light;
+
+      @include sp {
+        display: block;
+        width: 100%;
+        padding: $spacing-md $spacing-lg;
+      }
+    }
+
+    td {
+      padding: $spacing-lg;
+      font-size: $font-size-sm;
+      color: $color-text-light;
+      line-height: $line-height-base;
+
+      @include sp {
+        display: block;
+        padding: $spacing-md $spacing-lg $spacing-lg;
+      }
+    }
+  }
+
+  &__map {
+    margin-top: $spacing-3xl;
+    border-radius: $radius-md;
+    overflow: hidden;
+
+    iframe {
+      width: 100%;
+      height: 400px;
+
+      @include sp {
+        height: 300px;
+      }
+    }
+  }
+}
+
+// ---- Recruit（採用ページ）----
+.p-recruit {
+  &__message {
+    @include container-narrow;
+    text-align: center;
+    padding: $spacing-3xl 0;
+
+    h2 {
+      @include heading-style;
+      font-size: $font-size-3xl;
+      margin-bottom: $spacing-xl;
+
+      @include sp {
+        font-size: $font-size-2xl;
+      }
+    }
+
+    p {
+      font-size: $font-size-base;
+      line-height: 2;
+      color: $color-text-light;
+    }
+  }
+
+  &__benefits {
+    @include grid(3, $spacing-xl);
+
+    .benefit-card {
+      text-align: center;
+      padding: $spacing-2xl;
+      background: $color-bg;
+      border: 1px solid $color-border-light;
+
+      .icon {
+        font-size: $font-size-4xl;
+        margin-bottom: $spacing-md;
+      }
+
+      h3 {
+        font-size: $font-size-lg;
+        font-weight: $font-weight-medium;
+        margin-bottom: $spacing-md;
+      }
+
+      p {
+        font-size: $font-size-sm;
+        color: $color-text-light;
+      }
+    }
+  }
+
+  &__positions {
+    @include container-narrow;
+
+    .position-card {
+      border: 1px solid $color-border;
+      border-radius: $radius-md;
+      overflow: hidden;
+      margin-bottom: $spacing-lg;
+
+      &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: $spacing-lg;
+        background: $color-bg-light;
+        cursor: pointer;
+
+        h3 {
+          font-size: $font-size-lg;
+          font-weight: $font-weight-medium;
+        }
+
+        .badge {
+          font-size: $font-size-xs;
+          padding: 4px 12px;
+          background: $color-primary;
+          color: $color-text-white;
+          border-radius: 100px;
+        }
+      }
+
+      &__body {
+        padding: $spacing-lg;
+
+        dl {
+          display: grid;
+          grid-template-columns: 120px 1fr;
+          gap: 0;
+
+          dt, dd {
+            padding: $spacing-sm 0;
+            border-bottom: 1px solid $color-border-light;
+            font-size: $font-size-sm;
+          }
+
+          dt {
+            font-weight: $font-weight-medium;
+          }
+
+          dd {
+            color: $color-text-light;
+          }
+        }
+      }
+    }
+  }
+}
+
+// ---- Contact / 資料請求 ----
+.p-contact {
+  &__form {
+    @include container-narrow;
+    background: $color-bg;
+    padding: $spacing-3xl;
+    border-radius: $radius-md;
+
+    @include sp {
+      padding: $spacing-xl $spacing-md;
+    }
+  }
+
+  &__field {
+    margin-bottom: $spacing-xl;
+
+    label {
+      display: block;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-medium;
+      margin-bottom: $spacing-sm;
+
+      .required {
+        display: inline-block;
+        font-size: $font-size-xs;
+        color: $color-text-white;
+        background: #c0392b;
+        padding: 1px 8px;
+        border-radius: 2px;
+        margin-left: $spacing-sm;
+      }
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 14px $spacing-md;
+      border: 1px solid $color-border;
+      border-radius: $radius-sm;
+      font-size: $font-size-base;
+      transition: $transition-base;
+      background: $color-bg;
+
+      &:focus {
+        outline: none;
+        border-color: $color-primary;
+        box-shadow: 0 0 0 3px rgba($color-primary, 0.1);
+      }
+    }
+
+    textarea {
+      min-height: 200px;
+      resize: vertical;
+    }
+
+    .radio-group,
+    .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: $spacing-md;
+
+      label {
+        display: flex;
+        align-items: center;
+        gap: $spacing-sm;
+        font-weight: $font-weight-regular;
+        cursor: pointer;
+      }
+    }
+
+    .note {
+      font-size: $font-size-xs;
+      color: $color-text-lighter;
+      margin-top: $spacing-xs;
+    }
+  }
+
+  &__privacy {
+    text-align: center;
+    margin-bottom: $spacing-xl;
+
+    label {
+      display: inline-flex;
+      align-items: center;
+      gap: $spacing-sm;
+      font-size: $font-size-sm;
+      cursor: pointer;
+
+      a {
+        color: $color-primary;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__submit {
+    text-align: center;
+
+    .c-btn {
+      min-width: 300px;
+
+      @include sp {
+        min-width: auto;
+        width: 100%;
+      }
+    }
+  }
+}
+
+// ---- Privacy Policy ----
+.p-privacy {
+  @include container-narrow;
+  padding: $spacing-3xl 0;
+
+  h2 {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-medium;
+    margin: $spacing-2xl 0 $spacing-md;
+    padding-bottom: $spacing-sm;
+    border-bottom: 1px solid $color-border;
+  }
+
+  p {
+    font-size: $font-size-sm;
+    color: $color-text-light;
+    line-height: 2;
+    margin-bottom: $spacing-md;
+  }
+
+  ul {
+    margin: $spacing-md 0 $spacing-lg;
+
+    li {
+      font-size: $font-size-sm;
+      color: $color-text-light;
+      padding: $spacing-xs 0;
+      padding-left: $spacing-lg;
+      position: relative;
+
+      &::before {
+        content: '・';
+        position: absolute;
+        left: 0;
+      }
+    }
+  }
+}

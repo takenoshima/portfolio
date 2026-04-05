@@ -1,0 +1,468 @@
+@use 'variables' as *;
+@use 'mixin' as *;
+// ============================================
+// Hero - ファーストビュー
+// ============================================
+
+.p-hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden;
+
+  @include sp {
+    min-height: 500px;
+  }
+
+  // ---- Slider ----
+  &__slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+
+    &.is-active {
+      opacity: 1;
+
+      img {
+        animation: heroZoom 8s ease-out forwards;
+      }
+    }
+
+    img {
+      @include cover-image;
+      transform: scale(1);
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0.4) 100%
+    );
+    z-index: 2;
+  }
+
+  // ---- Content ----
+  &__content {
+    position: absolute;
+    bottom: 15%;
+    left: 0;
+    width: 100%;
+    z-index: 3;
+    padding: 0 $spacing-3xl;
+
+    @include sp {
+      bottom: 20%;
+      padding: 0 $spacing-lg;
+    }
+  }
+
+  &__sub-copy {
+    font-size: $font-size-base;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: $letter-spacing-wider;
+    margin-bottom: $spacing-md;
+
+    @include sp {
+      font-size: $font-size-sm;
+    }
+  }
+
+  &__main-copy {
+    @include heading-style;
+    font-size: $font-size-hero;
+    color: $color-text-white;
+    line-height: $line-height-tight;
+
+    @include sp {
+      font-size: $font-size-3xl;
+    }
+  }
+}
+
+@keyframes heroZoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
+// ============================================
+// Home - キャッチコピーセクション
+// ============================================
+.p-home-catch {
+  padding: $spacing-6xl 0;
+  text-align: center;
+
+  &__sub {
+    font-size: $font-size-sm;
+    color: $color-text-light;
+    letter-spacing: $letter-spacing-wider;
+    margin-bottom: $spacing-md;
+  }
+
+  &__main {
+    @include heading-style;
+    font-size: $font-size-4xl;
+    color: $color-primary;
+    margin-bottom: $spacing-2xl;
+
+    @include sp {
+      font-size: $font-size-2xl;
+    }
+  }
+
+  &__desc {
+    @include container-narrow;
+    font-size: $font-size-base;
+    color: $color-text-light;
+    line-height: 2;
+  }
+}
+
+// ============================================
+// Home - 特長セクション
+// ============================================
+.p-home-features {
+  background-color: $color-bg-light;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-xl;
+
+    @include tab {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include sp {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__item {
+    background: $color-bg;
+    padding: $spacing-2xl;
+    text-align: center;
+    transition: $transition-base;
+
+    &:hover {
+      box-shadow: $shadow-lg;
+      transform: translateY(-4px);
+    }
+
+    .icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto $spacing-lg;
+      @include flex-center;
+      background-color: $color-bg-light;
+      border-radius: $radius-round;
+      color: $color-primary;
+      font-size: $font-size-2xl;
+    }
+
+    .num {
+      @include english-label;
+      font-size: $font-size-xs;
+      color: $color-secondary;
+      margin-bottom: $spacing-sm;
+    }
+
+    h3 {
+      @include heading-style;
+      font-size: $font-size-xl;
+      margin-bottom: $spacing-md;
+    }
+
+    p {
+      font-size: $font-size-sm;
+      color: $color-text-light;
+      line-height: $line-height-base;
+    }
+  }
+}
+
+// ============================================
+// Home - 施工事例セクション
+// ============================================
+.p-home-works {
+  &__grid {
+    @include grid(3, $spacing-lg);
+  }
+}
+
+// ============================================
+// Home - 数字で見るセクション
+// ============================================
+.p-home-numbers {
+  background-color: $color-primary;
+  color: $color-text-white;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: $spacing-xl;
+
+    @include tab {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include sp {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__item {
+    text-align: center;
+
+    .number {
+      @include english-label;
+      font-size: $font-size-5xl;
+      color: $color-secondary;
+      line-height: 1;
+
+      @include sp {
+        font-size: $font-size-4xl;
+      }
+
+      span {
+        font-size: $font-size-xl;
+      }
+    }
+
+    .label {
+      font-size: $font-size-sm;
+      margin-top: $spacing-sm;
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+}
+
+// ============================================
+// Home - お客様インタビュー
+// ============================================
+.p-home-interview {
+  &__slider {
+    overflow: hidden;
+    margin: 0 calc(-1 * $spacing-lg);
+    padding: 0 $spacing-lg;
+  }
+
+  &__track {
+    display: flex;
+    gap: $spacing-lg;
+    transition: transform 0.5s ease;
+  }
+
+  &__item {
+    flex: 0 0 calc(33.333% - #{$spacing-lg});
+    background: $color-bg;
+    overflow: hidden;
+
+    @include tab {
+      flex: 0 0 calc(50% - #{$spacing-lg});
+    }
+
+    @include sp {
+      flex: 0 0 calc(100% - #{$spacing-lg});
+    }
+
+    .image {
+      @include aspect-ratio(16, 10);
+    }
+
+    .body {
+      padding: $spacing-lg;
+    }
+
+    .name {
+      font-size: $font-size-sm;
+      color: $color-text-lighter;
+      margin-bottom: $spacing-sm;
+    }
+
+    .title {
+      font-size: $font-size-lg;
+      font-weight: $font-weight-medium;
+      @include line-clamp(2);
+    }
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: center;
+    gap: $spacing-md;
+    margin-top: $spacing-2xl;
+
+    button {
+      width: 48px;
+      height: 48px;
+      @include flex-center;
+      border: 1px solid $color-border;
+      border-radius: $radius-round;
+      color: $color-text;
+      font-size: $font-size-lg;
+      transition: $transition-base;
+
+      &:hover {
+        background-color: $color-primary;
+        border-color: $color-primary;
+        color: $color-text-white;
+      }
+    }
+  }
+}
+
+// ============================================
+// Home - 商品ラインナップ
+// ============================================
+.p-home-products {
+  background-color: $color-bg-light;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-xl;
+
+    @include sp {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__item {
+    position: relative;
+    @include aspect-ratio(16, 9);
+    @include overlay(rgba(0, 0, 0, 0.35));
+    border-radius: $radius-md;
+    overflow: hidden;
+    transition: $transition-base;
+
+    &:hover {
+      &::before {
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      img {
+        transform: scale(1.05);
+      }
+    }
+
+    img {
+      transition: transform 0.5s ease;
+    }
+
+    .content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: $spacing-xl;
+      z-index: 2;
+      color: $color-text-white;
+    }
+
+    .name {
+      @include heading-style;
+      font-size: $font-size-2xl;
+      margin-bottom: $spacing-sm;
+    }
+
+    .desc {
+      font-size: $font-size-sm;
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+}
+
+// ============================================
+// Home - モデルハウス
+// ============================================
+.p-home-modelhouse {
+  &__grid {
+    @include grid(3, $spacing-lg);
+  }
+
+  .c-card__body {
+    .location {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: $font-size-xs;
+      color: $color-text-lighter;
+      margin-bottom: $spacing-sm;
+
+      &::before {
+        content: '📍';
+        font-size: $font-size-sm;
+      }
+    }
+
+    .status {
+      display: inline-block;
+      font-size: $font-size-xs;
+      padding: 2px 10px;
+      border-radius: 100px;
+      margin-top: $spacing-sm;
+
+      &--open {
+        background-color: rgba($color-primary, 0.1);
+        color: $color-primary;
+      }
+
+      &--reservation {
+        background-color: rgba($color-secondary, 0.1);
+        color: $color-accent;
+      }
+    }
+  }
+}
+
+// ============================================
+// Home - ブログ/コラム
+// ============================================
+.p-home-blog {
+  background-color: $color-bg-light;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: $spacing-lg;
+
+    @include tab {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include sp {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .c-card {
+    &__date {
+      font-family: $font-family-english;
+      font-size: $font-size-xs;
+      color: $color-text-lighter;
+    }
+  }
+}

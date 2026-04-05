@@ -1,0 +1,15 @@
+// ============================================
+// Main Stylesheet - 工務店テンプレート
+// ============================================
+
+// Foundation
+@use 'reset';
+@use 'base';
+
+// Layout
+@use 'header';
+@use 'footer';
+
+// Pages
+@use 'home';
+@use 'pages';

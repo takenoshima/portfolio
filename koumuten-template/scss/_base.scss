@@ -1,0 +1,202 @@
+@use 'variables' as *;
+@use 'mixin' as *;
+// ============================================
+// Base Styles - 工務店テンプレート
+// ============================================
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-base;
+  color: $color-text;
+  background-color: $color-bg;
+  overflow-x: hidden;
+
+  &.is-menu-open {
+    overflow: hidden;
+  }
+}
+
+// ---- Container ----
+.l-container {
+  @include container;
+}
+
+.l-container--narrow {
+  @include container-narrow;
+}
+
+.l-container--wide {
+  @include container-wide;
+}
+
+// ---- Section ----
+.l-section {
+  padding: $spacing-6xl 0;
+
+  @include sp {
+    padding: $spacing-4xl 0;
+  }
+
+  &--bg {
+    background-color: $color-bg-light;
+  }
+
+  &--dark {
+    background-color: $color-bg-dark;
+    color: $color-text-white;
+  }
+
+  &--primary {
+    background-color: $color-primary;
+    color: $color-text-white;
+  }
+}
+
+// ---- Section Title ----
+.c-section-title {
+  @include section-title;
+}
+
+.c-section-title--left {
+  text-align: left;
+}
+
+.c-section-title--white {
+  .ja {
+    color: $color-text-white;
+  }
+
+  .desc {
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+// ---- Links ----
+a {
+  transition: $transition-base;
+}
+
+// ---- Images ----
+img {
+  height: auto;
+}
+
+// ---- Buttons ----
+.c-btn {
+  @include btn-primary;
+  @include btn-arrow;
+}
+
+.c-btn--secondary {
+  @include btn-secondary;
+  @include btn-arrow;
+}
+
+.c-btn--outline {
+  @include btn-outline;
+  @include btn-arrow;
+}
+
+.c-btn--lg {
+  padding: 20px 56px;
+  font-size: $font-size-base;
+}
+
+.c-btn--full {
+  width: 100%;
+}
+
+.c-btn--center {
+  display: flex;
+  margin: $spacing-2xl auto 0;
+  width: fit-content;
+}
+
+// ---- Breadcrumb ----
+.c-breadcrumb {
+  @include breadcrumb;
+
+  .l-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+}
+
+// ---- Page Hero ----
+.c-page-hero {
+  @include page-hero;
+}
+
+// ---- Card Components ----
+.c-card {
+  @include card-base;
+  @include card-hover;
+
+  &__image {
+    @include card-image;
+  }
+
+  &__body {
+    padding: $spacing-lg;
+  }
+
+  &__tag {
+    display: inline-block;
+    font-size: $font-size-xs;
+    color: $color-primary;
+    border: 1px solid $color-primary;
+    padding: 2px 12px;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-medium;
+    @include line-clamp(2);
+    margin-bottom: $spacing-sm;
+  }
+
+  &__desc {
+    font-size: $font-size-sm;
+    color: $color-text-light;
+    @include line-clamp(3);
+  }
+
+  &__meta {
+    font-size: $font-size-xs;
+    color: $color-text-lighter;
+    margin-top: $spacing-sm;
+  }
+}
+
+// ---- Scroll Animation ----
+.js-scroll {
+  @include fade-in-up;
+}
+
+// ---- Utility ----
+.u-sp-only {
+  @include pc {
+    display: none !important;
+  }
+}
+
+.u-pc-only {
+  @include sp {
+    display: none !important;
+  }
+}
+
+.u-text-center {
+  text-align: center;
+}
+
+.u-mb-0 { margin-bottom: 0 !important; }
+.u-mb-sm { margin-bottom: $spacing-sm !important; }
+.u-mb-md { margin-bottom: $spacing-md !important; }
+.u-mb-lg { margin-bottom: $spacing-lg !important; }
+.u-mb-xl { margin-bottom: $spacing-xl !important; }
+.u-mb-2xl { margin-bottom: $spacing-2xl !important; }
